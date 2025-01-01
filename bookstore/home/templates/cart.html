@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-5 fw-bold text-gradient">Your Cart</h2>
+    <table class="table table-bordered table-hover">
+        <thead class="bg-danger text-white">
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td class="align-middle">{{ item.product.name }}</td>
+                <td class="align-middle">
+                    <form method="POST" action="{% url 'update_cart_item' item.id %}" class="d-flex justify-content-center">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" min="1" value="{{ item.quantity }}" class="form-control quantity-input me-2 text-center" style="width: 60px;">
+                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                    </form>
+                </td>
+                <td class="align-middle">₹{{ item.product.price }}</td>
+                <td class="align-middle">₹{{ item.total_price }}</td>
+                <td class="align-middle">
+                    <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger btn-sm">Remove</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="text-end mt-4">
+        <h4 id="cart-total" class="fw-bold">Grand Total: ₹{{ total }}</h4>
+        <a href="{% url 'checkout' %}" class="btn btn-success btn-lg mt-3">Proceed to Checkout</a>
+    </div>
+</div>
+{% endblock %}
