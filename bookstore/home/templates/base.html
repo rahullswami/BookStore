@@ -1,48 +1,154 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookStore E-commerce</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="{% static 'style.css' %}" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BoomCart | {% block title %}{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <style>
+    body {
+      background: linear-gradient(135deg, #6C63FF, #9E9BFF);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      margin-left: 15px;
+    }
+
+    .hero {
+      padding: 60px 0;
+      animation: fadeIn 1s ease;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+
+    .hero-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      color: #fff;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .card-option {
+      border-radius: 16px;
+      transition: all 0.4s ease;
+      background: #fff;
+      color: #333;
+      cursor: pointer;
+      padding: 30px 0;
+    }
+
+    .card-option:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-option.facebook:hover {
+      background-color: #3b5998;
+      color: #fff;
+    }
+
+    .card-option.instagram:hover {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      color: #fff;
+    }
+
+    .card-option.youtube:hover {
+      background-color: #ff0000;
+      color: #fff;
+    }
+
+    .generate-btn {
+      background: linear-gradient(to right, #6C63FF, #9E9BFF);
+      color: white;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      padding: 10px 30px;
+      transition: 0.3s ease;
+    }
+
+    .generate-btn:hover {
+      background: #5a52d4;
+      transform: scale(1.05);
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #eee;
+    }
+
+    .input-group input {
+      border-radius: 30px;
+      padding: 10px 20px;
+    }
+
+    .img-fluid {
+      width: 250px;
+      height: auto;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top shadow">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-light" href="/">📚 BookStore</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="{% url 'cart' %}">Cart</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold" href="{% url 'order_history' %}">Order History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-warning" href="{% url 'logout' %}">Logout</a>
-                    </li>
-                </ul>
-                <form class="d-flex search-bar">
-                    <input class="form-control me-2 rounded-pill" type="search" name="search" placeholder="🔍 Search books"
-                        aria-label="Search">
-                    <button class="btn btn-light rounded-pill" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/">BoomCart</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'order_history' %}">Order</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
     <!-- Content Block -->
     <main class="py-4">
@@ -51,7 +157,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-danger text-white text-center py-4 position-relative">
+    <footer class="navbar text-white text-center py-4 position-relative">
         <div class="container">
             <p class="mb-1">&copy; 2024 BookStore. All Rights Reserved.</p>
             <p class="small">Follow us on:

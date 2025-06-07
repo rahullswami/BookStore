@@ -302,3 +302,217 @@ footer {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
+
+/* all .. csss  */
+
+/* base.html css  */
+
+body {
+    background: #3e1e68;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    height: auto;
+  }
+
+  .navbar {
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+  }
+
+  .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    margin-left: 15px;
+  }
+
+  .hero {
+    padding: 60px 0;
+    animation: fadeIn 1s ease;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  .hero-icon {
+    font-size: 80px;
+    margin-bottom: 20px;
+    color: #fff;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .card-option {
+    border-radius: 16px;
+    transition: all 0.4s ease;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    padding: 30px 0;
+  }
+
+  .card-option:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-option.facebook:hover {
+    background-color: #3b5998;
+    color: #fff;
+  }
+
+  .card-option.instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: #fff;
+  }
+
+  .card-option.youtube:hover {
+    background-color: #ff0000;
+    color: #fff;
+  }
+
+  .generate-btn {
+    background: linear-gradient(to right, #6C63FF, #9E9BFF);
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    padding: 10px 30px;
+    transition: 0.3s ease;
+  }
+
+  .generate-btn:hover {
+    background: #5a52d4;
+    transform: scale(1.05);
+  }
+
+  .footer {
+    margin-top: 60px;
+    font-size: 0.9rem;
+    color: #eee;
+  }
+
+  .input-group input {
+    border-radius: 30px;
+    padding: 10px 20px;
+  }
+
+  .img-fluid {
+    width: 250px;
+    height: auto;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
+  /* result.css  */
+
+
+  .container {
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-result {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card-result:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+  }
+
+  .card-result h5 {
+    font-weight: bold;
+    color: #6C63FF;
+  }
+
+  .copy-btn {
+    background-color: #6C63FF;
+    color: #fff;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+
+  .copy-btn:hover {
+    background-color: #4a00e0;
+    transform: scale(1.05);
+  }
+
+  .back-btn {
+    background: transparent;
+    border: 2px solid #fff;
+    color: white;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s ease;
+  }
+
+  .back-btn:hover {
+    background: white;
+    color: #6C63FF;
+  }
+
+  .footer {
+    margin-top: 60px;
+    font-size: 0.9rem;
+    color: #ddd;
+  }
+
+  .content-text {
+    margin-top: 10px;
+    font-size: 1.05rem;
+    white-space: pre-wrap;
+  }
+
+  .heading {
+    background: -webkit-linear-gradient(left, #fff, #ddd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  }
